@@ -1,0 +1,206 @@
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.floating-element {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  backdrop-filter: blur(10px);
+}
+
+.floating-element-1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 10%;
+}
+
+.floating-element-2 {
+  width: 120px;
+  height: 120px;
+  top: 20%;
+  right: 15%;
+}
+
+.floating-element-3 {
+  width: 60px;
+  height: 60px;
+  top: 60%;
+  left: 5%;
+}
+
+.floating-element-4 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  right: 10%;
+}
+
+.floating-element-5 {
+  width: 70px;
+  height: 70px;
+  bottom: 30%;
+  left: 20%;
+}
+
+.floating-element-6 {
+  width: 90px;
+  height: 90px;
+  top: 40%;
+  left: 50%;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .floating-element {
+  background: linear-gradient(45deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .floating-element-1,
+  .floating-element-3,
+  .floating-element-5 {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .floating-element-2,
+  .floating-element-4,
+  .floating-element-6 {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.05s ease-out, background 0.15s ease;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.custom-cursor::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, border-color;
+}
+
+/* Cursor hover states */
+.custom-cursor.hovering {
+  transform: translate(-50%, -50%) scale(1.3);
+  background: linear-gradient(45deg, #ec4899, #f59e0b);
+  transition: transform 0.08s ease-out, background 0.12s ease;
+}
+
+.custom-cursor.hovering::before {
+  width: 50px;
+  height: 50px;
+  border-color: rgba(236, 72, 153, 0.4);
+  border-width: 2px;
+}
+
+.custom-cursor.clicking {
+  transform: translate(-50%, -50%) scale(0.9);
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  transition: transform 0.05s ease-out, background 0.1s ease;
+}
+
+/* Hide default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Cursor trail effect */
+.cursor-trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: opacity 0.15s ease-out;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+}
+
+/* Interactive elements cursor effects */
+a, button, .tag, .project-card, [role="button"] {
+  position: relative;
+}
+
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor,
+.tag:hover ~ .custom-cursor,
+.project-card:hover ~ .custom-cursor {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* Mobile: disable custom cursor */
+@media (max-width: 768px) {
+  .custom-cursor,
+  .cursor-trail {
+    display: none;
+  }
+  
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .custom-cursor {
+  background: linear-gradient(45deg, #8b5cf6, #ec4899);
+}
+
+[data-theme="dark"] .custom-cursor::before {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+[data-theme="dark"] .cursor-trail {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+/* Performance optimization for cursor */
+.custom-cursor,
+.cursor-trail {
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Smooth scrolling compatibility */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Disable cursor on scrolling elements */
+html::-webkit-scrollbar {
+  cursor: auto !important;
+}

@@ -14,7 +14,7 @@ const Work = () => {
       technologies: "ReactJS, Java Spring Boot, Design Patterns",
       image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=400&fit=crop",
       description: "Web application supporting students course registration with admin/staff roles, full CRUD functions, and optimized with design patterns.",
-      github: "https://github.com/ToHoanghuy/DKHP"
+      github: "https://github.com/FakerHecker/SE401_Group2_Project"
     },
     {
       id: 2,
@@ -106,18 +106,40 @@ const Work = () => {
             <motion.div 
               key={project.id}
               className="project-card"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
+              initial={{ opacity: 0, y: 50, rotateY: -30 }}
+              whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+              transition={{ delay: index * 0.15, duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
+              whileHover={{ 
+                y: -15, 
+                rotateY: 5,
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="project-image">
+              <motion.div 
+                className="project-image"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.4 }}
+              >
                 <img src={project.image} alt={project.title} />
-              </div>
+                <motion.div 
+                  className="image-overlay"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
               <div className="project-content">
                 <div className="project-header">
-                  <h3 className="project-title">{project.title}</h3>
+                  <motion.h3 
+                    className="project-title"
+                    whileHover={{ color: "#6366f1" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {project.title}
+                  </motion.h3>
                   <span className="project-period">{project.period}</span>
                 </div>
                 <p className="project-category">{project.category}</p>
@@ -135,12 +157,22 @@ const Work = () => {
                 
                 <p className="project-description">{project.description}</p>
                 
-                <div className="project-link" onClick={(e) => {
-                  e.stopPropagation();
-                  window.open(project.github, '_blank');
-                }}>
+                <motion.div 
+                  className="project-link" 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(project.github, '_blank');
+                  }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    backgroundColor: "#6366f1",
+                    color: "white"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
                   <span>View on GitHub →</span>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}

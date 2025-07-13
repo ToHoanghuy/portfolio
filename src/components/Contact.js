@@ -44,6 +44,14 @@ const Contact = () => {
                 <p>+84 386 441 295</p>
               </div>
             </div>
+
+            <div className="contact-item">
+              <FaPhone className="contact-icon" />
+              <div>
+                <h4>Phone</h4>
+                <p>+84 386 441 295</p>
+              </div>
+            </div>
             
             <div className="contact-item">
               <FaMapMarkerAlt className="contact-icon" />
@@ -110,9 +118,9 @@ const Contact = () => {
             <FaGithub />
             <span>Github</span>
           </a>
-          <a href="https://www.facebook.com/profile.php?id=100069102022852" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/huy-t%C3%B4-ho%C3%A0ng-024414329/" target="_blank" rel="noopener noreferrer">
             <FaLinkedin />
-            <span>Facebook</span>
+            <span>Linkein</span>
           </a>
           <a href="mailto:tohoanghuy19052004@gmail.com">
             <FaEnvelope />

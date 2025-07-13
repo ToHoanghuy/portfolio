@@ -8,6 +8,8 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import FloatingElements from './components/FloatingElements';
+import CustomCursor from './components/CustomCursor';
 import './App.css';
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
 
   return (
     <div className="App">
+      <CustomCursor />
+      <FloatingElements />
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Hero />
       <Work />

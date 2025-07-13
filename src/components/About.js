@@ -47,17 +47,26 @@ const About = () => {
 
           <motion.div 
             className="about-image"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 50, rotateY: -30 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            whileHover={{ 
+              scale: 1.05,
+              rotateY: 5,
+              transition: { duration: 0.3 }
+            }}
           >
-            <div className="image-placeholder">
+            <motion.div 
+              className="image-placeholder"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.4 }}
+            >
               <img 
                 src="/assets/avt.png" 
                 alt="Developer" 
               />
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -70,45 +79,62 @@ const About = () => {
         >
           <h3>Technical Skills</h3>
           <div className="skills-grid">
-            <div className="skill-category">
-              <h4>Programming Languages</h4>
-              <div className="skills">
-                <span>JavaScript</span>
-                <span>TypeScript</span>
-                <span>C#</span>
-                <span>Java</span>
-                <span>HTML/CSS</span>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h4>Frameworks & Platforms</h4>
-              <div className="skills">
-                <span>React Native</span>
-                <span>ReactJS</span>
-                <span>Node.js (Express)</span>
-                <span>ASP.NET MVC</span>
-                <span>ASP.NET Core</span>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h4>Database Management</h4>
-              <div className="skills">
-                <span>SQL Server</span>
-                <span>MongoDB</span>
-                <span>Firebase</span>
-                <span>Supabase</span>
-              </div>
-            </div>
-            <div className="skill-category">
-              <h4>Tools & Others</h4>
-              <div className="skills">
-                <span>Visual Studio</span>
-                <span>Android Studio</span>
-                <span>Figma</span>
-                <span>GitHub</span>
-                <span>Postman</span>
-              </div>
-            </div>
+            {[
+              {
+                title: "Programming Languages",
+                skills: ["JavaScript", "TypeScript", "C#", "Java", "HTML/CSS"]
+              },
+              {
+                title: "Frameworks & Platforms", 
+                skills: ["React Native", "ReactJS", "Node.js (Express)", "ASP.NET MVC", "ASP.NET Core"]
+              },
+              {
+                title: "Database Management",
+                skills: ["SQL Server", "MongoDB", "Firebase", "Supabase"]
+              },
+              {
+                title: "Tools & Others",
+                skills: ["Visual Studio", "Android Studio", "Figma", "GitHub", "Postman", "UI/UX", "Design Pattern"]
+              }
+            ].map((category, categoryIndex) => (
+              <motion.div 
+                key={category.title}
+                className="skill-category"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + categoryIndex * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <h4>{category.title}</h4>
+                <div className="skills">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ 
+                        delay: 0.7 + categoryIndex * 0.1 + skillIndex * 0.05, 
+                        duration: 0.4 
+                      }}
+                      viewport={{ once: true }}
+                      whileHover={{ 
+                        scale: 1.1,
+                        backgroundColor: "#6366f1",
+                        color: "white",
+                        transition: { duration: 0.2 }
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>

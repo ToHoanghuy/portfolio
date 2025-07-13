@@ -27,8 +27,9 @@ const Header = ({ darkMode, toggleDarkMode }) => {
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
           <ul>
             <li><a href="#work" onClick={() => scrollToSection('work')}>Work</a></li>
-            <li><a href="#about" onClick={() => scrollToSection('about')}>About</a></li>
+            
             <li><a href="#services" onClick={() => scrollToSection('services')}>Services</a></li>
+            <li><a href="#about" onClick={() => scrollToSection('about')}>About</a></li>
             <li><a href="#experience" onClick={() => scrollToSection('experience')}>Experience</a></li>
             <li><a href="#contact" onClick={() => scrollToSection('contact')}>Contact</a></li>
           </ul>
