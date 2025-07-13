@@ -1,0 +1,263 @@
+.experience {
+  padding: 8rem 0;
+  background: var(--bg-secondary);
+}
+
+.experience-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 4rem;
+  text-align: left;
+}
+
+.experience-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+.experience-item {
+  display: flex;
+  gap: 2rem;
+  background: var(--card-bg);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.experience-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.experience-icon.education {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.experience-icon.work {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  padding: 0 !important;
+}
+
+.experience-details {
+  flex: 1;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.experience-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.experience-period {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.experience-details h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+}
+
+.experience-role {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+
+.experience-gpa {
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.experience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.experience-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.work-projects {
+  margin-top: 1rem;
+}
+
+.project-item {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--bg-color);
+  border-radius: 10px;
+  border-left: 4px solid var(--primary-color);
+}
+
+.project-item h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+}
+
+.project-item p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.experience-description {
+  color: #666;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.responsibilities {
+  margin-bottom: 1.5rem;
+}
+
+.responsibilities h5,
+.internship-projects h5 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.experience-list,
+.project-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.experience-list li,
+.project-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.experience-list li::before,
+.project-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.internship-projects {
+  margin-top: 1rem;
+}
+
+.project-list li {
+  font-weight: 500;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .experience-description {
+  color: #b0b0b0;
+}
+
+[data-theme="dark"] .experience-list li,
+[data-theme="dark"] .project-list li {
+  color: #b0b0b0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .experience {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .experience-item {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .experience-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .experience-item {
+    padding: 1.5rem;
+  }
+
+  .experience-header h3 {
+    font-size: 1.5rem;
+  }
+}
