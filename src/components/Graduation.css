@@ -894,6 +894,30 @@
     font-size: 1rem;
   }
 
+  /* Reduce padding for main sections and containers on small screens */
+  .invitation-section,
+  .calendar-section,
+  .location-section,
+  .map-section,
+  .contact-section,
+  .ngl-section,
+  .timeline-section,
+  .route-section,
+  .memories-section {
+    padding: 1rem !important;
+  }
+
+  .time-card,
+  .location-card,
+  .calendar-container,
+  .map-placeholder,
+  .contact-card,
+  .static-map,
+  .ngl-content {
+    padding: 1rem !important;
+    border-radius: 14px;
+  }
+
   /* Compact contact card layout for small phones */
   .contact-card {
     flex-direction: row;
