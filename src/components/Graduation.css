@@ -350,13 +350,14 @@
 
 .transport-item {
   display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  padding: 1.5rem;
+  gap: 1.25rem;
+  align-items: center; /* center vertically */
+  padding: 1rem;
   background: #f8fdfb;
-  border-radius: 20px;
-  border-left: 5px solid #4a7c59;
-  transition: all 0.3s ease;
+  border-radius: 16px;
+  border-left: 4px solid #4a7c59;
+  transition: all 0.18s ease;
+  min-height: 84px;
 }
 
 .transport-item:hover {
@@ -389,12 +390,16 @@
 .map-script ol { margin: 0.5rem 0 0 1.2rem; }
 
 .transport-icon {
-  font-size: 3rem;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
   color: #4a7c59;
-  background: white;
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 .transport-details h4 {
@@ -413,6 +418,35 @@
 .transport-details strong {
   color: #2d4a3a;
   font-weight: 700;
+}
+
+/* Desktop: show transport options in a row */
+@media (min-width: 900px) {
+  .transport-options {
+    flex-direction: row;
+  }
+  .transport-item {
+    flex: 1 1 0;
+  }
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .transport-item {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .transport-icon {
+    font-size: 2rem;
+    padding: 0.6rem;
+    border-radius: 10px;
+  }
+  .transport-details h4 {
+    font-size: 1.1rem;
+  }
+  .transport-details p {
+    font-size: 0.95rem;
+  }
 }
 
 /* Map Section */
@@ -798,17 +832,23 @@
   }
 
   .transport-item {
-    flex-direction: column;
-    text-align: center;
+    /* keep compact row layout on small screens to avoid tall cards */
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
   }
 
   .contacts-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Make contact cards compact on tablet and smaller: keep row layout but reduce padding */
   .contact-card {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
+    padding: 1rem;
+    gap: 1rem;
+    align-items: center;
   }
 }
 
@@ -852,5 +892,41 @@
 
   .transport-details p {
     font-size: 1rem;
+  }
+
+  /* Compact contact card layout for small phones */
+  .contact-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .contact-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .contact-info {
+    flex: 1 1 auto;
+    min-width: 0; /* allow text truncation/wrapping */
+  }
+
+  .contact-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-phone {
+    font-size: 0.95rem;
+  }
+
+  .call-button {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    margin-left: 6px;
   }
 }
