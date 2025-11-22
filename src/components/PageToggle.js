@@ -14,12 +14,12 @@ function PageToggle() {
       >
         Portfolio
       </Link> */}
-      <Link 
+      {/* <Link 
         to="/graduation" 
         className={`toggle-button ${!isPortfolio ? 'active' : ''}`}
       >
         Graduation
-      </Link>
+      </Link> */}
     </div>
   );
 }

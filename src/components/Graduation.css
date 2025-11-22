@@ -382,6 +382,12 @@
 }
 .map-link:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(27,111,178,0.18); }
 
+/* Static map styles */
+.static-map { max-width: 1000px; margin: 0 auto; text-align: left; }
+.static-map-img { width: 100%; height: auto; border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); border: 6px solid rgba(255,255,255,0.85); }
+.map-script { background: rgba(255,255,255,0.9); padding: 1rem 1.25rem; border-radius: 12px; margin-top: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+.map-script ol { margin: 0.5rem 0 0 1.2rem; }
+
 .transport-icon {
   font-size: 3rem;
   color: #4a7c59;

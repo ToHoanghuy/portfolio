@@ -11,6 +11,7 @@ export default function MapViewer({
   const viewportRef = useRef(null);
   const canvasRef = useRef(null);
   const imgRef = useRef(null);
+  const initialViewRef = useRef(null);
 
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -36,14 +37,15 @@ export default function MapViewer({
     const fitScale = Math.min(vw / iw, vh / ih);
     const initialScale = Math.max(minScale, Math.min(1.2, fitScale * 1.15));
 
-    // Focus towards top-right area (green in front of Toà C)
-    const focusX = iw * 0.78; // ~78% width
-    const focusY = ih * 0.34; // ~34% height
+  // Focus towards area in front of Toà C (moved left/up)
+  const focusX = iw * 0.72; // ~72% width (moved left)
+  const focusY = ih * 0.30; // ~30% height (moved up)
     const tx = vw / 2 - focusX * initialScale;
     const ty = vh / 2 - focusY * initialScale;
 
     setScale(initialScale);
-    setTranslate({ x: tx, y: ty });
+  setTranslate({ x: tx, y: ty });
+  initialViewRef.current = { scale: initialScale, translate: { x: tx, y: ty } };
   }, [loaded, minScale]);
 
   const onWheel = (e) => {
@@ -86,9 +88,10 @@ export default function MapViewer({
   const transform = useMemo(() => `translate(${translate.x}px, ${translate.y}px) scale(${scale})`, [translate, scale]);
 
   // Two highlight spots (approximate positions) in front of Toà C
+  // Spots adjusted to be in front of Toà C (moved slightly left/up)
   const spots = [
-    { id: 'spot1', x: 0.76, y: 0.36 },
-    { id: 'spot2', x: 0.84, y: 0.34 },
+    { id: 'spot1', x: 0.70, y: 0.32 },
+    { id: 'spot2', x: 0.75, y: 0.30 },
   ];
 
   return (
@@ -134,7 +137,15 @@ export default function MapViewer({
         <div className="mapv-controls">
           <button className="mapv-btn" aria-label="Phóng to" onClick={() => setScale((s) => Math.min(maxScale, s * 1.15))}>＋</button>
           <button className="mapv-btn" aria-label="Thu nhỏ" onClick={() => setScale((s) => Math.max(minScale, s / 1.15))}>－</button>
-          <button className="mapv-btn" aria-label="Đặt lại" onClick={() => { setScale(1); setTranslate({ x: -300, y: -200 }); }}>⟳</button>
+          <button className="mapv-btn" aria-label="Đặt lại" onClick={() => {
+            if (initialViewRef.current) {
+              setScale(initialViewRef.current.scale);
+              setTranslate(initialViewRef.current.translate);
+            } else {
+              setScale(1);
+              setTranslate({ x: -300, y: -200 });
+            }
+          }}>⟳</button>
         </div>
 
         {/* Textual directions */}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Graduation.css';
 import { FaPhone, FaMotorcycle, FaSubway, FaClock } from 'react-icons/fa';
-import MapViewer from './MapViewer';
+// MapViewer removed: use static map image instead
 import CelebrationEffects from './CelebrationEffects';
 import EventCountdown from './EventCountdown';
 import { motion } from 'framer-motion';
@@ -149,18 +149,29 @@ function Graduation() {
             </div>
             <div className="transport-item">
               <div className="transport-icon"><FaSubway /></div>
-              <div className="transport-details"><h4>Metro</h4><p>Đi tàu Metro đến <strong>Ga số 9</strong>, sau đó vào cổng <strong>B</strong></p></div>
+              <div className="transport-details"><h4>Metro</h4><p>Đi tàu Metro đến <strong>Ga ĐHQG</strong>, sau đó vào cổng <strong>B</strong></p></div>
             </div>
           </div>
         </div>
       </motion.section>
 
       {/* Map Section - Bản đồ với focus vào 2 vùng cỏ xanh trước Toà C */}
-  <motion.section className="map-section section-hero" initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
-        <h2 className="section-title">Bản đồ khuôn viên UIT</h2>
-        <p className="section-subtitle">Điểm gặp: sân gạch phía trước Toà C</p>
-        <MapViewer src="/assets/map.png" />
-      </motion.section>
+        {/* Map Section - static image with directions script below */}
+        <motion.section className="map-section section-hero" initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
+          <h2 className="section-title">Bản đồ khuôn viên UIT</h2>
+          <p className="section-subtitle">Điểm gặp: sân gạch phía trước Toà C</p>
+          <div className="static-map">
+            <img src="/assets/map.png" alt="Bản đồ UIT" className="static-map-img" />
+            <div className="map-script">
+              <strong>Hướng dẫn:</strong>
+              <ol>
+                <li>Vào cổng A (đường Hàn Thuyên) và đi thẳng theo trục chính.</li>
+                <li>Gửi xe tại bãi giữ xe bên trái.</li>
+                <li>Đi bộ tới sân gạch phía trước Toà C — chỗ 2 vùng xanh đậm.</li>
+              </ol>
+            </div>
+          </div>
+        </motion.section>
             {/* Contact Section */}
   <motion.section className="contact-section section-hero" initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.9 }}>
         <div className="contacts-grid">
