@@ -1,0 +1,141 @@
+.mapv-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  background: #0b0b0c;
+}
+
+.mapv-viewport {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 55vw, 560px);
+  overflow: hidden;
+  cursor: grab;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(30,37,54,0.6) 0%, rgba(22,25,38,0.5) 15%, rgba(9,10,17,0.9) 100%),
+              linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+}
+
+.mapv-viewport.is-panning { cursor: grabbing; }
+
+.mapv-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+  will-change: transform;
+  transition: transform 120ms ease-out;
+}
+
+.mapv-img {
+  display: block;
+  user-select: none;
+  pointer-events: none; /* we pan on container, not the img */
+  max-width: none; /* don't shrink image; we control via transform */
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.mapv-controls {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+}
+
+.mapv-btn {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(26,28,40,0.9);
+  color: #e8ebf7;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.1s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.mapv-btn:hover { transform: translateY(-1px); background: rgba(34,37,52,0.95); border-color: rgba(255,255,255,0.18); }
+.mapv-btn:active { transform: translateY(0); }
+
+.mapv-error, .mapv-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #c7cbe3;
+  font-size: 14px;
+  letter-spacing: .2px;
+}
+
+.mapv-hint {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  color: #aab0d0;
+  font-size: 12px;
+  background: rgba(21,23,34,0.7);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.mapv-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Focus rings - Đánh dấu 2 vùng cỏ xanh đậm */
+.focus-core {
+  fill: rgba(20, 255, 20, 0.95);
+  filter: drop-shadow(0 0 12px rgba(0,255,100,0.8));
+}
+.focus-ring {
+  fill: none;
+  stroke: rgba(20, 255, 20, 0.9);
+  stroke-width: 1.5;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+.focus-glow {
+  fill: rgba(0, 255, 120, 0.2);
+  animation: glowPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse {
+  0%,100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+@keyframes glowPulse {
+  0%,100% { opacity: 0.15; }
+  50% { opacity: 0.3; }
+}
+
+/* Directions panel */
+.mapv-directions {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: rgba(21,23,34,0.78);
+  color: #e8ebf7;
+  font-size: 13px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  max-width: min(80%, 420px);
+  z-index: 3;
+}
+.mapv-directions ol {
+  margin: 6px 0 0 1rem;
+  padding: 0;
+  line-height: 1.45;
+}

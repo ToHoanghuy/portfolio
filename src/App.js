@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Work from './components/Work';
-import Services from './components/Services';
-import About from './components/About';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';
-import FloatingElements from './components/FloatingElements';
-import CustomCursor from './components/CustomCursor';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Portfolio from './components/Portfolio';
+import Graduation from './components/Graduation';
+import PageToggle from './components/PageToggle';
 import './App.css';
 
 function App() {
@@ -31,19 +24,21 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <CustomCursor />
-      <FloatingElements />
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Hero />
-      <Work />
-      <Services />
-      <About />
-      <Experience />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <Router>
+      <div className="App">
+        <PageToggle />
+        <Routes>
+          <Route 
+            path="/" 
+            element={<Portfolio darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} 
+          />
+          <Route 
+            path="/graduation" 
+            element={<Graduation />} 
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

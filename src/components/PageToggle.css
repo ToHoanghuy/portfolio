@@ -1,0 +1,82 @@
+.page-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 8px;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  animation: slideInRight 0.5s ease;
+}
+
+[data-theme="dark"] .page-toggle {
+  background: rgba(30, 30, 30, 0.95);
+}
+
+.toggle-button {
+  padding: 12px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  color: #333;
+  background: transparent;
+}
+
+[data-theme="dark"] .toggle-button {
+  color: #fff;
+}
+
+.toggle-button:hover {
+  transform: scale(1.05);
+}
+
+.toggle-button.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-toggle {
+    top: 10px;
+    right: 10px;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .toggle-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-toggle {
+    flex-direction: column;
+    top: 10px;
+    right: 10px;
+  }
+
+  .toggle-button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}

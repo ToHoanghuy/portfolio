@@ -1,0 +1,83 @@
+.route-anim {
+  width: 100%;
+  max-width: 1000px;
+  margin: 24px auto 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.route-toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(18,20,30,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+}
+.route-btn {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(26,28,40,0.8);
+  color: #e6e9f8;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.route-btn.active { background: rgba(74,91,255,0.25); border-color: rgba(105,120,255,0.5); }
+
+.route-stage {
+  position: relative;
+  height: clamp(220px, 45vw, 420px);
+  background: radial-gradient(600px 300px at 80% 10%, rgba(34,44,68,0.5), rgba(20,24,36,0.8)), #0e0f16;
+}
+
+.route-stage svg { width: 100%; height: 100%; display: block; }
+
+.route-path { stroke: #76a6ff; stroke-width: 3; fill: none; opacity: .75; filter: drop-shadow(0 0 6px rgba(118,166,255,0.4)); }
+.route-path.metro { stroke: #86f7d1; filter: drop-shadow(0 0 6px rgba(134,247,209,0.35)); }
+
+.runner {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Motion: dash draw + icon along path */
+.dash {
+  stroke-dasharray: 6 10;
+  animation: dashmove 1.5s linear infinite;
+}
+@keyframes dashmove {
+  to { stroke-dashoffset: -16; }
+}
+
+.runner-icon {
+  font-size: 18px;
+}
+
+.legend {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  gap: 10px;
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  color: #cfd5f2;
+  font-size: 12px;
+}
+.legend-dot { width: 10px; height: 10px; border-radius: 999px; }
+.legend .bike { background: #76a6ff; box-shadow: 0 0 8px rgba(118,166,255,.5); }
+.legend .metro { background: #86f7d1; box-shadow: 0 0 8px rgba(134,247,209,.5); }
+
+.route-controls {
+  display: flex;
+  gap: 8px;
+  padding: 10px 12px 14px;
+  border-top: 1px dashed rgba(255,255,255,0.08);
+  background: rgba(18,20,30,0.65);
+}
+.route-controls button { border-radius: 10px; padding: 8px 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(26,28,40,0.85); color: #e6e9f8; }
